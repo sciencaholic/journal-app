@@ -6,13 +6,13 @@
 	height: inherit;
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 601px) {
 	.container {
 		width: inherit;
 	}
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 993px) {
 	.container {
 		width: inherit;
 	}
@@ -23,6 +23,15 @@
 }
 .p-1 {
   padding: 1rem;
+}
+.pl-1 {
+  padding-left: 1rem;
+}
+.pr-1 {
+  padding-right: 1rem;
+}
+.pr-8 {
+  padding-right: 8rem;
 }
 .m-0 {
 	margin: 0;

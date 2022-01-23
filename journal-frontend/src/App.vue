@@ -1,17 +1,20 @@
 <template>
   <div class="container">
     <nav-bar></nav-bar>
+    <JournalPage />
   </div>
 </template>
 
 <script>
 import materialize from 'materialize-css'
 import NavBar from './components/NavBar.vue'
+import JournalPage from './components/JournalPage.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    JournalPage
   },
   mounted () {
     materialize.AutoInit()
