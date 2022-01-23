@@ -1,20 +1,20 @@
 
 .container {
 	background-color: #212121;
-	max-width: inherit;
-	width: inherit;
+	max-width: inherit !important;
+	width: inherit !important;
 	height: inherit;
 }
 
 @media only screen and (min-width: 601px) {
 	.container {
-		width: inherit;
+		width: inherit !important;
 	}
 }
 
 @media only screen and (min-width: 993px) {
 	.container {
-		width: inherit;
+		width: inherit !important;
 	}
 }
 
