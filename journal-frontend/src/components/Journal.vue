@@ -1,6 +1,6 @@
 <template>
 	<div class="journal ml-2">
-		<h2 class="head-date">{{date}}</h2>
+		<h3 class="head-date">{{date}}</h3>
 			<Entry :entries="entries"></Entry>
 	</div>
 </template>
@@ -35,8 +35,7 @@ export default {
 					id: 3,
 					highlight: false,
 					time: "13:20",
-					text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. @JohnDoe`
+					text: `Lorem ipsum dolor sit amet. @JohnDoe`
 				},
 				{
 					id: 4,
@@ -62,6 +61,8 @@ export default {
 .head-date {
 	color: white;
 	font-size: 3rem;
+	margin: 1.2rem;
+	font-family: 'Montserrat', sans-serif;
 }
 
 </style>

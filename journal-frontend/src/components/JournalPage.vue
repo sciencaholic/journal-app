@@ -1,19 +1,25 @@
 <template>
   <div class="page">
+		<!-- <calendar-dial /> -->
     <Journal />
-		<calendar-dial />
   </div>
 </template>
 
 <script>
 import Journal from './Journal.vue'
-import CalendarDial from './CalendarDial.vue'
+// import CalendarDial from './CalendarDial.vue'
 
 export default {
   name: 'JournalPage',
   components: {
     Journal,
-		CalendarDial
-  }
+		// CalendarDial,
+  },
+	data () {
+		return {
+			start: undefined,
+			end: undefined
+		}
+	}
 }
 </script>

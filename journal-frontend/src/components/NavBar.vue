@@ -1,6 +1,7 @@
 <template>
 
-  <div>
+  <div class="navbar">
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a>
     <ul id="slide-out" class="sidenav">
       <!-- <li>
         <div class="user-view">
@@ -12,11 +13,10 @@
       </li> -->
       
         <li><a class="waves-effect" href="/journal">Journal</a></li>
-        <li><a class="waves-effect" href="/highlights">Highlights</a></li>
+        <li><a class="waves-effect" href="/moments">Moments</a></li>
         <li><a class="waves-effect" href="/tags">Tags</a></li>
-        <li><a class="waves-effect" href="/people">People</a></li>
+        <!-- <li><a class="waves-effect" href="/people">People</a></li> -->
     </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a>
   </div>
 </template>
 
@@ -28,11 +28,17 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  /* display: block; */
+  width: min-content;
+  height: min-content;
+}
 .sidenav {
   background-color: #48cfae;
 }
 .hamburger {
-  padding: 1rem;
+  margin: 1.2rem;
+  font-size: 3rem;
   color: #ffffff;
 }
 .sidenav li>a {

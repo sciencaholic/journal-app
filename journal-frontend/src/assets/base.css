@@ -1,5 +1,6 @@
 
 .container {
+	display: flex !important;
 	background-color: #212121;
 	max-width: inherit !important;
 	width: inherit !important;
@@ -33,8 +34,17 @@
 .pr-8 {
   padding-right: 8rem;
 }
+.pt-5 {
+  padding-top: 5rem;
+}
+.pt-8 {
+  padding-top: 8rem;
+}
 .m-0 {
 	margin: 0;
+}
+.m-1 {
+	margin: 1rem;
 }
 .m-auto {
 	margin: auto;

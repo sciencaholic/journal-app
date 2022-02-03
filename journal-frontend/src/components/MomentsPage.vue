@@ -1,0 +1,25 @@
+<template>
+  <div class="page">
+		<calendar-dial />
+    <!-- <Journal /> -->
+  </div>
+</template>
+
+<script>
+// import Journal from './Journal.vue'
+import CalendarDial from './CalendarDial.vue'
+
+export default {
+  name: 'MomentsPage',
+  components: {
+    // Journal,
+		CalendarDial,
+  },
+	data () {
+		return {
+			start: undefined,
+			end: undefined
+		}
+	}
+}
+</script>
