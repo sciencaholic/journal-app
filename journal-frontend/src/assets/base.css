@@ -1,3 +1,6 @@
+html, body, #app {
+	height: 100vh;
+}
 
 .container {
 	display: flex !important;
@@ -58,6 +61,9 @@
 .mr-1 {
   margin-right: 1rem;
 }
+.mr-8 {
+  margin-right: 8rem;
+}
 .mb-1 {
   margin-bottom: 1rem;
 }
@@ -68,3 +74,20 @@
   margin-left: 2rem;
 }
 
+.entry {
+	display:flex; 
+	flex-direction: row; 
+	justify-content: center; 
+	align-items: center;
+	color: #ffffff;
+	font-size: 1.25rem;
+	width: 75%;
+}
+.entry-c2 {
+	/* width: 60%; */
+	flex:2;
+	color: white;
+}
+.entry-c3 {
+	width: 5rem;
+}

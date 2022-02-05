@@ -28,5 +28,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap'); */
+
 @import './assets/base.css';
 </style>

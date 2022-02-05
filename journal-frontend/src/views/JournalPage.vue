@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Journal from './Journal.vue'
+import Journal from '../components/Journal.vue'
 // import CalendarDial from './CalendarDial.vue'
 
 export default {

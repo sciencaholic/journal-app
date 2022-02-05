@@ -1,17 +1,20 @@
 <template>
 	<div class="journal ml-2">
 		<h3 class="head-date">{{date}}</h3>
-			<Entry :entries="entries"></Entry>
+			<Entry @toggle-highlight="toggleHighlight" :entries="entries"></Entry>
+			<new-entry />
 	</div>
 </template>
 
 <script>
 import Entry from './Entry.vue'
+import NewEntry from './NewEntry.vue'
 
 export default {
 	name: 'Journal',
 	components: {
-		Entry
+		Entry,
+		NewEntry
 	},
 	data() {
 		return {
@@ -52,6 +55,11 @@ export default {
 						eiusmod tempor incididunt ut labore et dolore magna aliqua.`
 				},
 			]
+		}
+	},
+	methods: {
+		toggleHighlight(id) {
+			this.entries = this.entries.map(e => e.id === id ? {...e, highlight:!e.highlight} : e);
 		}
 	}
 }

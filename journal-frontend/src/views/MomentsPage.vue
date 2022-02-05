@@ -7,7 +7,7 @@
 
 <script>
 // import Journal from './Journal.vue'
-import CalendarDial from './CalendarDial.vue'
+import CalendarDial from '../components/CalendarDial.vue'
 
 export default {
   name: 'MomentsPage',
