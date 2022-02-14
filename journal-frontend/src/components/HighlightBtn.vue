@@ -1,11 +1,13 @@
 <template>
 	<button v-if="isHighlighted"
+		:disabled="isDisabled ? isDisabled : false"
 		class="transparent z-depth-0 waves-effect waves-black btn-floating p-1"
 		@click="this.$emit('toggle-highlight', entryId)"
 	>
 		<i class="material-icons hl-red">favorite</i>
 	</button>
 	<button v-else
+		:disabled="isDisabled ? isDisabled : false"
 		class="transparent z-depth-0 waves-effect waves-black btn-floating p-1"
 		@click="this.$emit('toggle-highlight', entryId)"
 	>
@@ -31,6 +33,7 @@
 export default {
 	name: 'HighlightBtn',
 	props: {
+		isDisabled: Boolean,
 		isHighlighted: Boolean,
 		entryId: Number
 	},
@@ -50,5 +53,8 @@ export default {
 }
 .material-icons.uhl {
 	opacity: 10%;
+}
+a[disabled="disabled"] {
+  pointer-events: none;
 }
 </style>
