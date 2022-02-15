@@ -23,3 +23,9 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+.page {
+	width: 100%;
+}
+</style>

@@ -1,24 +1,25 @@
 <template>
   <div class="page">
-		<calendar-dial />
-    <!-- <Journal /> -->
+		<Entry @toggle-highlight="toggleHighlight" :entries="entries" :isHLEnabled="false"></Entry>
   </div>
 </template>
 
 <script>
-// import Journal from './Journal.vue'
-import CalendarDial from '../components/CalendarDial.vue'
+import moment from 'moment'
 
 export default {
   name: 'MomentsPage',
   components: {
-    // Journal,
-		CalendarDial,
   },
 	data () {
 		return {
-			start: undefined,
-			end: undefined
+		}
+	},
+	methods: {
+		getDateForDisplay() {
+			for (let i = 0; i < this.entries.length; i++) {
+				this.entries[i].display_date = moment(this.entries[i].date).format("MMM DD");
+			}
 		}
 	}
 }
