@@ -1,26 +1,49 @@
 <template>
-  <div class="page">
-		<Entry @toggle-highlight="toggleHighlight" :entries="entries" :isHLEnabled="false"></Entry>
+  <div class="box1">
+		<h3 class="head-title">Moments</h3>
+		<Entry :entries="moments" :isHLEnabled="false"></Entry>
+		<div class="box2"></div>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
+import shared from '../shared.js'
+import api from '../modules/api'
+import Entry from '../components/Entry.vue'
 
 export default {
   name: 'MomentsPage',
   components: {
+		Entry
   },
-	data () {
+	data() {
 		return {
+			isBusy: false,
+			moments: []
 		}
 	},
+	created() {
+		this.isBusy = true;
+		this.refreshMoments();
+		this.isBusy = false;
+	},
 	methods: {
-		getDateForDisplay() {
-			for (let i = 0; i < this.entries.length; i++) {
-				this.entries[i].display_date = moment(this.entries[i].date).format("MMM DD");
+		async refreshMoments() {
+			let resp = await api.getMoments();
+			if (resp && resp.status == "success") {
+				this.moments = (resp && resp.data) ? resp.data : null 
+				// console.log(this.moments);
+				shared.getDisplayDateOrTime(this.moments, "display_date", "MMM DD");
+				shared.getDisplayDateOrTime(this.moments, "time", "hh:mm");
+			}
+			else {
+				// TODO: show toast error
 			}
 		}
 	}
 }
 </script>
+
+<style scoped>
+
+</style>

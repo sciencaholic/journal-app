@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="box2">
 		<div class="entry" :key="entry._id" v-for="entry in entries">
 			<highlight-btn 
 				v-if="isHLEnabled"
@@ -7,7 +7,7 @@
 				:entryId="entry._id" 
 				@toggle-highlight="this.$emit('toggle-highlight', entry._id)" 
 			/>
-			<p v-else class="entry-c2 ml-1 mr-8">{{entry.display_date}}</p>
+			<p v-else class="entry-c3">{{entry.display_date}}</p>
 			<p class="entry-c2 ml-1 mr-8">{{entry.text}}</p>
 			<p class="entry-c3 ml-1 mr-1">{{entry.time}}</p>
 		</div>
@@ -29,7 +29,8 @@ export default {
 		return {}
 	},
 	created() {}, 
-	methods: {}
+	methods: {
+	}
 }
 </script>
 

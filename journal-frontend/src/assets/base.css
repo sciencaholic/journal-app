@@ -8,8 +8,7 @@ html, body, #app {
 	max-width: inherit !important;
 	width: inherit !important;
 	height: inherit;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 @media only screen and (min-width: 601px) {
@@ -75,6 +74,9 @@ html, body, #app {
 .ml-2 {
   margin-left: 2rem;
 }
+.mb-1 {
+  margin-bottom: 5rem;
+}
 
 .entry {
 	display:flex; 
@@ -83,7 +85,6 @@ html, body, #app {
 	align-items: center;
 	color: #ffffff;
 	font-size: 1.25rem;
-	width: 75%;
 }
 .entry-c2 {
 	/* width: 60%; */
@@ -94,4 +95,40 @@ html, body, #app {
 }
 .entry-c3 {
 	width: 5rem;
+}
+.head-title {
+	color: white;
+	font-size: 3rem;
+	margin: 1.2rem;
+	font-family: 'Montserrat', sans-serif;
+}
+.box1 {
+	width: 100%;
+	display: grid;
+}
+.box2 {
+	width: 75%;
+	height: 100%;
+	float:left;
+	overflow-y: auto;
+	/* width:1000px; */
+	/* height: 100px; */
+}
+.box2:after {
+  content: "";
+  display: block;
+  height: 50px;
+  width: 100%;
+}
+.box2::-webkit-scrollbar {
+  width: 0.70rem;               /* width of the entire scrollbar */
+}
+.box2::-webkit-scrollbar-track {
+  border-radius: 2rem;       /* roundness of the scroll thumb */
+  background: #545454;        /* color of the tracking area */
+}
+.box2::-webkit-scrollbar-thumb {
+  background-color: #1fb393;    /* color of the scroll thumb */
+  border-radius: 2rem;       /* roundness of the scroll thumb */
+  border: 3px solid #545454;  /* creates padding around scroll thumb */
 }

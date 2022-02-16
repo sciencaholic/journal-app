@@ -1,6 +1,6 @@
 <template>
 	<div class="journal ml-2">
-		<h3 class="head-date">{{date}}</h3>
+		<h3 class="head-title">{{date}}</h3>
 			<Entry 
 				:show="isBusy"
 				@toggle-highlight="toggleHighlight" 
@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import moment from 'moment'
 import api from '../modules/api'
+import shared from '../shared.js'
 import Entry from './Entry.vue'
 import NewEntry from './NewEntry.vue'
 
@@ -41,7 +41,7 @@ export default {
 			if (resp && resp.status == "success") {
 				this.entries = (resp && resp.data) ? resp.data : null 
 				// console.log(this.entries);
-				this.getTimeForDisplay(this.entries);
+				shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
 			}
 			else {
 				// TODO: show toast error
@@ -61,23 +61,12 @@ export default {
 		},
     addTask(entry) {
       this.entries = [...this.entries, entry];
-			this.getTimeForDisplay();
-    },
-		getTimeForDisplay(entries) { // TODO: optimize ?
-			for (let i = 0; i < entries.length; i++) {
-				entries[i].time = moment(entries[i].date).format("hh:mm");
-			}
-		}
+			shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
+    }
 	}
 }
 </script>
 
 <style scoped>
-.head-date {
-	color: white;
-	font-size: 3rem;
-	margin: 1.2rem;
-	font-family: 'Montserrat', sans-serif;
-}
 
 </style>

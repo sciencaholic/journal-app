@@ -1,29 +1,31 @@
 <template>
-	<form class="entry" autocomplete="off" @submit="onSubmit">
-		<highlight-btn 
-			:isHighlighted="newEntry.highlight"
-			@toggle-highlight="toggleHighlight"
-		/>
-		<p class="entry-c2 ml-1 mr-8">
-			<!-- <div class="input-field entry-c2 ml-1 mr-8"> -->
-				<textarea 
-					type="text" 
-					name="text" 
-					class="materialize-textarea"
-					v-model="newEntry.text" 
-					placeholder="Tap to make an entry"
-					maxlength="120"
-					wrap="soft"
-				></textarea>
-			<!-- </div> -->
-		</p>
-		<div class="entry-c3 ml-1 mr-1">
-			<button type="submit" class="entry-add-btn waves-effect waves-black btn-floating">
-				<i class="material-icons">add</i>
-			</button>
-		</div>
-		
-	</form>
+	<div class="box2">
+		<form class="entry" autocomplete="off" @submit="onSubmit">
+			<highlight-btn 
+				:isHighlighted="newEntry.highlight"
+				@toggle-highlight="toggleHighlight"
+			/>
+			<p class="entry-c2 ml-1 mr-8">
+				<!-- <div class="input-field entry-c2 ml-1 mr-8"> -->
+					<textarea 
+						type="text" 
+						name="text" 
+						class="materialize-textarea"
+						v-model="newEntry.text" 
+						placeholder="Tap to make an entry"
+						maxlength="120"
+						wrap="soft"
+					></textarea>
+				<!-- </div> -->
+			</p>
+			<div class="entry-c3 ml-1 mr-1">
+				<button type="submit" class="entry-add-btn waves-effect waves-black btn-floating">
+					<i class="material-icons">add</i>
+				</button>
+			</div>
+			
+		</form>
+	</div>
 </template>
 
 <script>
