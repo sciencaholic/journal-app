@@ -28,42 +28,6 @@ export default {
 			isBusy: false,
 			date: "January 22, 2022",
 			entries: []
-			// entries: [
-			// 	{
-			// 		id: 1,
-			// 		highlight: true,
-			// 		date: moment().format("2022-01-22T08:45:51+05:30"),
-			// 		text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-			// 			eiusmod tempor incididunt ut labore et dolore magna aliqua. #awesome`
-			// 	},
-			// 	{
-			// 		id: 2,
-			// 		highlight: false,
-			// 		date: moment().format("2022-01-22T10:00:51+05:30"),
-			// 		text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-			// 			eiusmod tempor incididunt ut labore et dolore magna aliqua. #productive #work`
-			// 	},
-			// 	{
-			// 		id: 3,
-			// 		highlight: false,
-			// 		date: moment().format("2022-01-22T13:20:51+05:30"),
-			// 		text: `Lorem ipsum dolor sit amet. @JohnDoe`
-			// 	},
-			// 	{
-			// 		id: 4,
-			// 		highlight: true,
-			// 		date: moment().format("2022-01-22T18:30:51+05:30"),
-			// 		text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-			// 			eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-			// 	},
-			// 	{
-			// 		id: 5,
-			// 		highlight: false,
-			// 		date: moment().format("2022-01-22T20:45:51+05:30"),
-			// 		text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-			// 			eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-			// 	},
-			// ]
 		}
 	},
 	created() {
@@ -74,11 +38,26 @@ export default {
 	methods: {
 		async refreshEntries() {
 			let resp = await api.getJournalEntries();
-			this.entries = (resp && resp.data) ? resp.data : null 
-			this.getTimeForDisplay(this.entries);
+			if (resp && resp.status == "success") {
+				this.entries = (resp && resp.data) ? resp.data : null 
+				// console.log(this.entries);
+				this.getTimeForDisplay(this.entries);
+			}
+			else {
+				// TODO: show toast error
+			}
 		},
-		toggleHighlight(id) {
-			this.entries = this.entries.map(e => e.id === id ? {...e, highlight:!e.highlight} : e);
+		async toggleHighlight(id) {
+			this.entries = this.entries.map(e => e._id === id ? {...e, highlight:!e.highlight} : e);
+
+			let data = {};
+			data.highlight = this.entries.find(e => e._id === id).highlight;
+			// TODO: POST REQUEST CORS ERROR ON SENDING OBJECT
+			// let resp = await api.toggleHighlight(id, data);
+			// if (resp && resp.status == "success") return;
+			// else {
+			// 	// TODO: show toast error
+			// }
 		},
     addTask(entry) {
       this.entries = [...this.entries, entry];

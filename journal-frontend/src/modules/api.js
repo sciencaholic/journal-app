@@ -17,7 +17,7 @@ export default {
       data,
       headers: {
         // Authorization: `Bearer ${accessToken}`
-        // "content-type" : 'application/json',
+        "content-type" : 'application/json',
 				// "Access-Control-Allow-Origin": "*",
 				// "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
 				// "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
@@ -38,9 +38,13 @@ export default {
     console.log ('API: getTags');
     return this.execute('get', `/tags/${id}`)
   },
-  createPost (data) {
-    console.log ('API: createPost');
-    return this.execute('post', '/posts', data)
+  createEntry(data) {
+    console.log ('API: createEntry');
+    return this.execute('post', '/entry/create', data)
+  },
+  toggleHighlight(id, data) {
+    console.log ('API: toggleHighlight', data);
+    return this.execute('post', `/highlight/${id}`, data)
   },
   // deletePost (id) {
   //   return this.execute('delete', `/posts/${id}`)

@@ -6,8 +6,8 @@ const router = express.Router();
 
 
 function cors(req, res, next) {
-  // console.log("TODO: remove test profile after login implementation")
   res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token");
   next();
 }
@@ -47,7 +47,7 @@ router.get('/tags/:tag', cors, (req, res, next) => {
 });
 
 
-router.post('/entry', cors, (req, res, next) => {
+router.post('/entry/create', cors, (req, res, next) => {
 
 	let entry = req.body.entry;	
   let newEntry = new JournalModel(entry);
@@ -60,6 +60,39 @@ router.post('/entry', cors, (req, res, next) => {
     if (err) return res.status(200).json({status:"error", data:err});
 		return res.status(200).json({status:"success"});
   });
+});
+
+
+router.post('/entry/update/:id', cors, (req, res, next) => {
+
+	const entryId = req.params.id;
+	let entry = req.body.entry;	
+  
+	JournalModel.findOneAndUpdate(
+		{_id:entryId}, 
+		{"$set": { "highlight":highlight }},
+		{ new:true, useFindAndModify:false },
+	(err, output) => {
+		if (err) return res.status(200).json({status:"error", data:err});
+	return res.status(200).json({status:"success"});
+	})
+});
+
+
+router.post('/highlight/:id', cors, (req, res, next) => {
+	const entryId = req.params.id;
+	const highlight = req.body.highlight;
+	console.log("entryId = ", entryId);
+	console.log("highlight = ", highlight);
+
+	// JournalModel.findOneAndUpdate(
+	// 	{_id:entryId}, 
+	// 	{"$set": { "highlight":highlight }},
+	// 	{ new:true, useFindAndModify:false },
+	// (err, output) => {
+	// 	if (err) return res.status(200).json({status:"error", data:err});
+		return res.status(200).json({status:"success"});
+	// })
 });
 
 

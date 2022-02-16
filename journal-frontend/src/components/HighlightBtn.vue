@@ -35,7 +35,7 @@ export default {
 	props: {
 		isDisabled: Boolean,
 		isHighlighted: Boolean,
-		entryId: Number
+		entryId: String
 	},
 	data() {
 		return {}

@@ -54,7 +54,7 @@ export default {
 				return; 
 			}
 
-			this.newEntry.id = Math.floor(Math.random()*100000); // TODO: be
+			// this.newEntry.id = Math.floor(Math.random()*100000); // TODO: be
 			this.newEntry.date = moment().format();
 			console.log("newEntry: ", this.newEntry);
 			this.$emit('add-task', this.newEntry);
