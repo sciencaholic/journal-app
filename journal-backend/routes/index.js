@@ -36,22 +36,22 @@ router.get('/moments', cors, (req, res, next) => {
 });
 
 
-router.get('/tags/:tag', cors, (req, res, next) => {
-	let tag = req.params.tag || null;
-	let query = (tag) ? {tags:tag} : {}
+router.get('/tags/:tag?', cors, (req, res, next) => {
+	let tag = req.params.tag;
 
-	JournalModel.find(query, (err, entries) => {
+	JournalModel.find({tags:{ $exists: true, $ne: [] } }, (err, entries) => {
 		if (err) {
 			console.log("Mongo Error: ", err);
 			return res.status(200).json({status:"error", data:err});
 		}
-		console.log(`found entries with tag ${tag}:`, entries.length);
-		// TODO: TAG LIST
-		// let tagList = [];
-		// entries.forEach(e => {
-		// 	tagList.push(new Set((e.tags)));
-		// });
-		return res.status(200).json({status:"success", data:entries}); // , tags:tagList
+		console.log(`found tagged entries`, entries.length);
+		
+		// make a list of all tags - sorted
+		let tagsList = [...new Set([].concat.apply([], entries.map(e => e.tags)))].sort();
+		// if :tag is null then return values of first tag from that list
+		if (!tag) tag = tagsList[0];
+		entries = entries.filter(e => e.tags.includes(tag));
+		return res.status(200).json({status:"success", data:entries, currentTag:tag, tagsList:tagsList});
 	})
 });
 

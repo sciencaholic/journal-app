@@ -1,8 +1,12 @@
 <template>
-  <div class="box1">
+  <div class="parent-box">
 		<h3 class="head-title">Moments</h3>
-		<Entry :entries="moments" :isHLEnabled="false"></Entry>
-		<div class="box2"></div>
+		<Entry 
+			:show="isBusy"
+			:entries="moments" 
+			:isHLEnabled="false"
+		></Entry>
+		<div class="child-box-foot"></div>
   </div>
 </template>
 

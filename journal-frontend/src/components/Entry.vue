@@ -1,5 +1,5 @@
 <template>
-	<div class="box2">
+	<div class="child-box-main">
 		<div class="entry" :key="entry._id" v-for="entry in entries">
 			<highlight-btn 
 				v-if="isHLEnabled"
@@ -29,8 +29,7 @@ export default {
 		return {}
 	},
 	created() {}, 
-	methods: {
-	}
+	methods: {}
 }
 </script>
 

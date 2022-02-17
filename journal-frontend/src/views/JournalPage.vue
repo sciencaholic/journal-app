@@ -1,5 +1,5 @@
 <template>
-  <div class="box1">
+  <div class="parent-box">
 		<!-- <calendar-dial /> -->
     <h3 class="head-title">{{date}}</h3>
 		<Entry 

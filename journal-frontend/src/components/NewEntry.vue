@@ -1,5 +1,5 @@
 <template>
-	<div class="box2">
+	<div class="child-box-foot">
 		<form class="entry" autocomplete="off" @submit="onSubmit">
 			<highlight-btn 
 				:isHighlighted="newEntry.highlight"
