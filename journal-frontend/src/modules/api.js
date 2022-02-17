@@ -26,9 +26,9 @@ export default {
       return req.data
     })
   },
-  getJournalEntries() {
+  getJournalEntries(date) {
     console.log ('API: getJournalEntries');
-    return this.execute('get', '/journal')
+    return this.execute('get', `/journal/${date}`)
   },
   getMoments() {
     console.log ('API: getMoments');
@@ -39,7 +39,7 @@ export default {
     return this.execute('get', `/tags/${id}`)
   },
   createEntry(data) {
-    console.log ('API: createEntry');
+    console.log ('API: createEntry', data);
     return this.execute('post', '/entry/create', data)
   },
   toggleHighlight(id, data) {

@@ -31,6 +31,7 @@
 <script>
 import moment from 'moment'
 import HighlightBtn from './HighlightBtn.vue'
+import shared from "../shared";
 
 export default {
   components: { HighlightBtn },
@@ -58,6 +59,7 @@ export default {
 
 			// this.newEntry.id = Math.floor(Math.random()*100000); // TODO: be
 			this.newEntry.date = moment().format();
+			this.newEntry.tags = shared.findHashtags(this.newEntry.text)
 			console.log("newEntry: ", this.newEntry);
 			this.$emit('add-task', this.newEntry);
 			// resetting the form

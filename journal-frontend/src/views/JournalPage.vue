@@ -1,7 +1,7 @@
 <template>
   <div class="parent-box">
 		<!-- <calendar-dial /> -->
-    <h3 class="head-title">{{date}}</h3>
+    <h3 class="head-title">{{head_date_display}}</h3>
 		<Entry 
 			:show="isBusy"
 			@toggle-highlight="toggleHighlight" 
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import api from '../modules/api'
 import shared from '../shared.js'
 import Entry from '../components/Entry.vue'
@@ -29,18 +30,19 @@ export default {
 	data() {
 		return {
 			isBusy: false,
-			date: "January 22, 2022",
+			default_date: moment().format(),
 			entries: []
 		}
 	},
 	created() {
 		this.isBusy = true;
+		this.head_date_display = moment(this.default_date).format("MMMM D, YYYY");
 		this.refreshEntries();
 		this.isBusy = false;
 	},
 	methods: {
 		async refreshEntries() {
-			let resp = await api.getJournalEntries();
+			let resp = await api.getJournalEntries(moment(this.default_date).format("DD-MM-YYYY"));
 			if (resp && resp.status == "success") {
 				this.entries = (resp && resp.data) ? resp.data : null 
 				// console.log(this.entries);
@@ -53,17 +55,21 @@ export default {
 		async toggleHighlight(id) {
 			this.entries = this.entries.map(e => e._id === id ? {...e, highlight:!e.highlight} : e);
 
-			let data = {};
-			data.highlight = this.entries.find(e => e._id === id).highlight;
-			// TODO: POST REQUEST CORS ERROR ON SENDING OBJECT
-			// let resp = await api.toggleHighlight(id, data);
-			// if (resp && resp.status == "success") return;
-			// else {
-			// 	// TODO: show toast error
-			// }
+			let resp = await api.toggleHighlight(id, {"highlight": this.entries.find(e => e._id === id).highlight});
+			if (resp && resp.status == "success") return;
+			else {
+				// TODO: show toast error
+			}
 		},
-    addTask(entry) {
-      this.entries = [...this.entries, entry];
+    async addTask(entry) {
+			let resp = await api.createEntry({"entry":entry});
+			if (resp && resp.status == "success") {
+				this.entries = [...this.entries, entry];
+				shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
+			}
+			else {
+				// TODO: show toast error
+			}
 			shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
     }
 	}

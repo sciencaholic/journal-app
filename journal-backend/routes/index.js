@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const moment = require('moment');
 const { JournalModel } = require('../lib/models.js');
 
 const router = express.Router();
@@ -11,9 +12,19 @@ function cors(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token");
   next();
 }
+router.options("*", cors);
 
-router.get('/journal', cors, (req, res, next) => {
-	JournalModel.find({}, (err, entries) => {
+router.get('/journal/:date', cors, (req, res, next) => {
+
+	let date = req.params.date;
+	let query = {
+    "date": { //query today up to tonight
+			$gte: moment(date, "DD-MM-YYYY").startOf('day').format(), 
+			$lt: moment(date, "DD-MM-YYYY").endOf('day').format()
+    }}
+		console.log(query);
+
+	JournalModel.find(query, (err, entries) => {
 		if (err) {
 			console.log("Mongo Error: ", err);
 			return res.status(200).json({status:"error", data:err});
@@ -60,6 +71,7 @@ router.post('/entry/create', cors, (req, res, next) => {
 
 	let entry = req.body.entry;	
   let newEntry = new JournalModel(entry);
+	// TODO: validation
   
   let err = newEntry.validateSync();
   // console.log('Passed validation during new entry creation', err == null);
@@ -97,20 +109,19 @@ router.post('/entry/update/:id', cors, (req, res, next) => {
 router.post('/highlight/:id', cors, (req, res, next) => {
 	const entryId = req.params.id;
 	const highlight = req.body.highlight;
-	console.log("entryId = ", entryId);
-	console.log("highlight = ", highlight);
+	if (!entryId) res.status(200).json({status:"error", data:"EMPTY_ID"});
 
-	// JournalModel.findOneAndUpdate(
-	// 	{_id:entryId}, 
-	// 	{"$set": { "highlight":highlight }},
-	// 	{ new:true, useFindAndModify:false },
-	// (err, output) => {
-	// 	if (err) {
-	// 	console.log("Mongo Error: ", err);
-	// 	return res.status(200).json({status:"error", data:err});
-	// }
+	JournalModel.findOneAndUpdate(
+		{_id:entryId}, 
+		{"$set": { "highlight":highlight }},
+		// { new:true, useFindAndModify:false },
+	(err, output) => {
+		if (err) {
+			console.log("Mongo Error: ", err);
+			return res.status(200).json({status:"error", data:err});
+		}
 		return res.status(200).json({status:"success"});
-	// })
+	})
 });
 
 
