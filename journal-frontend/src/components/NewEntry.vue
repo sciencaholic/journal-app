@@ -12,6 +12,7 @@
 						name="text" 
 						class="materialize-textarea"
 						v-model="newEntry.text" 
+						v-on:keyup.enter="onSubmit"
 						placeholder="Tap to make an entry"
 						maxlength="120"
 						wrap="soft"

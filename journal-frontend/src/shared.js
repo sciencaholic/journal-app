@@ -10,8 +10,7 @@ export default {
 	},
 	findHashtags: function(string) {
 		//eslint-disable-next-line
-    let regexp = /\B\#\w\w+\b/g
-    let result = string.match(regexp);
+    let result = string.match(/#\w+/g).map(x => x.substr(1)) || [];
     return result;
 	}
 }
