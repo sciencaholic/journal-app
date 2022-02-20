@@ -9,8 +9,9 @@ export default {
 		}
 	},
 	findHashtags: function(string) {
+		let matches = string.match(/#\w+/g) || [];
 		//eslint-disable-next-line
-    let result = string.match(/#\w+/g).map(x => x.substr(1)) || [];
+    let result = matches.map(x => x.substr(1)) || [];
     return result;
 	}
 }

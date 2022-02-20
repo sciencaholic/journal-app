@@ -134,16 +134,18 @@ html, body, #app {
 	margin-left: 2rem;
 }
 .child-box-main::-webkit-scrollbar {
-  width: 0.70rem;               /* width of the entire scrollbar */
+  width: 0.50rem;
+	background-color: transparent;
+	scrollbar-width: thin;
 }
 .child-box-main::-webkit-scrollbar-track {
-  border-radius: 2rem;       /* roundness of the scroll thumb */
-  background: #545454;        /* color of the tracking area */
+  border-radius: 2rem;
+  /* background: #545454; */
 }
 .child-box-main::-webkit-scrollbar-thumb {
-  background-color: #1fb393;    /* color of the scroll thumb */
-  border-radius: 2rem;       /* roundness of the scroll thumb */
-  border: 3px solid #545454;  /* creates padding around scroll thumb */
+  background-color: #1fb393;
+  border-radius: 2rem;
+  /* border: 3px solid #545454; */
 }
 .child-box-foot {
 	width: 75%;
@@ -158,4 +160,7 @@ html, body, #app {
   display: block;
   height: 2rem;
   width: 100%;
+}
+.hashtag {
+	color: #1fb393 !important;
 }

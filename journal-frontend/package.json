@@ -15,7 +15,6 @@
     "moment": "^2.29.1",
     "v-calendar": "^3.0.0-alpha.8",
     "vue": "^3.0.0",
-    "vue-highlights": "^0.1.0",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
