@@ -35,18 +35,19 @@ export default {
     return this.execute('get', `/moments`)
   },
   getTags(id) {
-    console.log ('API: getTags');
+    console.log ('API: getTags', id);
     return this.execute('get', `/tags/${id}`)
   },
   createEntry(data) {
-    console.log ('API: createEntry', data);
+    console.log ('API: createEntry');
     return this.execute('post', '/entry/create', data)
   },
   toggleHighlight(id, data) {
     console.log ('API: toggleHighlight', data);
     return this.execute('post', `/highlight/${id}`, data)
   },
-  // deletePost (id) {
-  //   return this.execute('delete', `/posts/${id}`)
-  // }
+  deleteEntry(id) {
+    console.log ('API: deleteEntry', id);
+    return this.execute('post', `/entry/delete/${id}`)
+  }
 }

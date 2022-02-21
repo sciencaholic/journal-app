@@ -41,7 +41,7 @@ export default {
 				shared.getDisplayDateOrTime(this.moments, "time", "hh:mm");
 			}
 			else {
-				// TODO: show toast error
+				shared.toast(shared.errorTexts.SERVER_ERROR);
 			}
 		}
 	}

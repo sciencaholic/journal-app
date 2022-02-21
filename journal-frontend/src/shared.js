@@ -1,8 +1,17 @@
 import moment from 'moment'
+import { createToast } from 'mosha-vue-toastify';
 
 export default {
-  foo: function() { alert("foo!") },
-	
+	errorTexts: {
+		"EMPTY_ENTRY_TEXT": "Please write something.",
+		"SERVER_ERROR": "Oops! Something happened. Try refreshing the page."
+	},
+	toast: function(msg) {
+		return createToast(msg, {
+			hideProgressBar: true,
+			toastBackgroundColor: '#1fb393'
+		})
+	},
 	getDisplayDateOrTime: function(entries, key, format) { // TODO: optimize ?
 		for (let i = 0; i < entries.length; i++) {
 			entries[i][key] = moment(entries[i].date).format(format);

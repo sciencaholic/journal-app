@@ -1,14 +1,14 @@
 <template>
   <div class="parent-box">
-		<!-- <calendar-dial /> -->		
 		<calendar-modal @journal-date-change="refreshEntries"></calendar-modal>
 		<Entry 
 			:show="isBusy"
 			@toggle-highlight="toggleHighlight" 
+			@delete-entry="deleteEntry"
 			:entries="entries" 
 			:isHLEnabled="true"
 		></Entry>
-		<new-entry @add-task="addTask" />
+		<new-entry @add-entry="addEntry" />
   </div>
 </template>
 
@@ -19,8 +19,6 @@ import shared from '../shared.js'
 import Entry from '../components/Entry.vue'
 import NewEntry from '../components/NewEntry.vue'
 import CalendarModal from "../components/CalendarModal.vue";
-
-// import CalendarDial from './CalendarDial.vue'
 
 export default {
   name: 'JournalPage',
@@ -49,7 +47,7 @@ export default {
 				shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
 			}
 			else {
-				// TODO: show toast error
+				shared.toast(shared.errorTexts.SERVER_ERROR);
 			}
 			this.isBusy = false;
 		},
@@ -59,20 +57,28 @@ export default {
 			let resp = await api.toggleHighlight(id, {"highlight": this.entries.find(e => e._id === id).highlight});
 			if (resp && resp.status == "success") return;
 			else {
-				// TODO: show toast error
+				shared.toast(shared.errorTexts.SERVER_ERROR);
 			}
 		},
-    async addTask(entry) {
+    async addEntry(entry) {
 			let resp = await api.createEntry({"entry":entry});
 			if (resp && resp.status == "success") {
 				this.entries = [...this.entries, entry];
 				shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
 			}
 			else {
-				// TODO: show toast error
+				shared.toast(shared.errorTexts.SERVER_ERROR);
 			}
 			shared.getDisplayDateOrTime(this.entries, "time", "hh:mm");
-    }
+    },
+		async deleteEntry(id) {
+			this.entries = this.entries.filter(e => e._id !== id);
+			let resp = await api.deleteEntry(id);
+			if (resp && resp.status == "success") return;
+			else {
+				shared.toast(shared.errorTexts.SERVER_ERROR);
+			}
+		}
 	}
 }
 </script>

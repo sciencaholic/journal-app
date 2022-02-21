@@ -11,7 +11,13 @@
 			<!-- <p class="entry-c2 ml-1 mr-8">{{entry.text}}</p> -->
 			<hashtag-highlight :tags="entry.tags" :text="entry.text"/>
 			<p class="entry-c3 ml-1 mr-1">{{entry.time}}</p>
-			<router-view/>
+			<button
+				class="transparent z-depth-0 waves-effect waves-black btn-floating p-1"
+				@click="this.$emit('delete-entry', entry._id)"
+			>
+				<i class="material-icons delete-btn">clear</i>
+			</button>
+			<!-- <router-view/> -->
 		</div>
 	</div>
 </template>
@@ -40,4 +46,7 @@ export default {
 </script>
 
 <style scoped>
+.delete-btn {
+	color: #616161;
+}
 </style>

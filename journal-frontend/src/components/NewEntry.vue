@@ -53,16 +53,17 @@ export default {
 		},
 		onSubmit(e) {
 			e.preventDefault();
+			this.newEntry.text = this.newEntry.text.trim(/\n/g, '');
 			if (!this.newEntry.text) { 
-				// alert('Please write something'); // TODO: make it a toast ?
-				return; 
+				shared.toast(shared.errorTexts.EMPTY_ENTRY_TEXT)
+				return;
 			}
 
 			// this.newEntry.id = Math.floor(Math.random()*100000); // TODO: be
 			this.newEntry.date = moment().format();
 			this.newEntry.tags = shared.findHashtags(this.newEntry.text) || [];
 			console.log("newEntry: ", this.newEntry);
-			this.$emit('add-task', this.newEntry);
+			this.$emit('add-entry', this.newEntry);
 			// resetting the form
 			this.newEntry = {
 				highlight: false,

@@ -54,12 +54,11 @@ export default {
 				shared.getDisplayDateOrTime(this.tagEntries, "time", "hh:mm");
 			}
 			else {
-				// TODO: show toast error
+				shared.toast(shared.errorTexts.SERVER_ERROR);
 			}
 		},
 		onTagSelect(tag) {
 			if (tag == this.currentTag) return;
-			console.log("TAG CHANGED!");
 			this.currentTag = tag;
 			this.refreshTagEntries();
 		}

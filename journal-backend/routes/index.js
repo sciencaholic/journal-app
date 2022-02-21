@@ -87,6 +87,18 @@ router.post('/entry/create', cors, (req, res, next) => {
 });
 
 
+router.post('/entry/delete/:id', cors, (req, res, next) => {
+	const entryId = req.params.id;
+  
+	JournalModel.deleteOne({_id:entryId}, (err, output) => {
+		if (err) {
+			console.log("Mongo Error: ", err);
+			return res.status(200).json({status:"error", data:err});
+		}
+		return res.status(200).json({status:"success"});
+	})
+});
+
 router.post('/entry/update/:id', cors, (req, res, next) => {
 
 	const entryId = req.params.id;
