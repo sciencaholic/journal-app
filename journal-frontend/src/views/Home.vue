@@ -58,7 +58,7 @@ li {
   margin: 0 1.5vmin;
 }
 
-@media only screen and (min-width: 601px) {
+/* @media only screen and (min-width: 601px) {
   .intro > p {
     font-size: 1.5rem;
   }
@@ -68,5 +68,5 @@ li {
   .pages-list {
     font-size: 1.5rem;
   }
-}
+} */
 </style>

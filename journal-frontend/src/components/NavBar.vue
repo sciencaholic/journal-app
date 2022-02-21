@@ -3,6 +3,7 @@
   <div class="navbar">
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a>
     <ul id="slide-out" class="sidenav">
+        <!-- <div class="brand-logo"><img :src="logo_source"></div> -->
       <!-- <li>
         <div class="user-view">
           <div class="background"><img src="images/office.jpg"></div>
@@ -21,13 +22,26 @@
 </template>
 
 <script>
+import shared from "../shared.js";
 export default {
   name: 'NavBar',
-  created() {}
+  data() {
+    return {
+      logo_source: ""
+    }
+  },
+  created() {
+    this.logo_source = shared.content.logo_source
+  }
 }
 </script>
 
 <style scoped>
+/* .brand-logo {
+  height: 20vmin;
+  width: 20vmin;
+  padding: 2rem;
+} */
 .navbar {
   /* display: block; */
   width: min-content;
