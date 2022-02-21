@@ -21,7 +21,7 @@ export default {
 			return text;
 		},
 		hashLink(s) {
-			return `<a href="/tags/${s}" title="#${s}" class="hashtag">#${s}</a>`
+			return `<a href="/tags/${s}" title="#${s}" class="base-color-green">#${s}</a>`
 		}
 	}
 }
