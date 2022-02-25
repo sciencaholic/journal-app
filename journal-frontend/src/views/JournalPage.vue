@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-box">
+  <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
 		<calendar-modal @journal-date-change="refreshEntries"></calendar-modal>
 		<Entry 
 			:show="isBusy"
@@ -26,6 +26,9 @@ export default {
 		Entry,
 		NewEntry,
 		CalendarModal
+	},
+	props: {
+		isMobileView: Boolean
 	},
 	data() {
 		return {

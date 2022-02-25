@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-box">
+  <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
 		<h3 class="head-title">Moments</h3>
 		<Entry 
 			:show="isBusy"
@@ -20,6 +20,9 @@ export default {
   components: {
 		Entry
   },
+	props: {
+		isMobileView: Boolean
+	},
 	data() {
 		return {
 			isBusy: false,

@@ -10,7 +10,7 @@ html, body, #app {
 	height: inherit;
   overflow: hidden;
 }
-
+/* 
 @media only screen and (min-width: 601px) {
 	.container {
 		width: inherit !important;
@@ -21,7 +21,7 @@ html, body, #app {
 	.container {
 		width: inherit !important;
 	}
-}
+} */
 
 .p-0 {
 	padding: 0;
@@ -95,6 +95,9 @@ html, body, #app {
 	box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.7);
 }
 
+.sidenav-padded {
+	padding-left: 22rem;
+}
 
 .entry {
 	display:flex; 

@@ -3,9 +3,17 @@
     <h2>{{ title }}</h2>
     <p>{{ blurb }}</p>
 
-    <ul class="pages-list">
+    <ul class="pages-list" v-if="!isMobileView">
       <li><a class="base-color-green waves-effect" href="/journal">Journal</a></li> | 
       <li><a class="base-color-green waves-effect" href="/moments">Moments</a></li> | 
+      <li><a class="base-color-green waves-effect" href="/tags">Tags</a></li>
+    </ul>
+
+    <ul class="pages-list-mobile" v-else>
+      <li><a class="base-color-green waves-effect" href="/journal">Journal</a></li>
+      <p class="emdash">——————</p>
+      <li><a class="base-color-green waves-effect" href="/moments">Moments</a></li>
+      <p class="emdash">——————</p>
       <li><a class="base-color-green waves-effect" href="/tags">Tags</a></li>
     </ul>
 
@@ -23,11 +31,17 @@ import shared from '../shared.js'
 export default {
   name: 'Home',
   data () {
-    return {}
+    return {
+      isMobileView: false
+    }
   },
   created() {
     this.title = shared.content.title.toUpperCase();
     this.blurb = shared.content.blurb;
+    this.isMobileView = shared.handleView();
+  },
+  mounted() {
+    window.onresize = () => { this.isMobileView = shared.handleView(); }
   }
 }
 </script>
@@ -53,11 +67,20 @@ export default {
   padding: 0;
   font-size: 3.5vmin;
 }
-li {
+.pages-list > li {
   display: inline-block;
   margin: 0 1.5vmin;
 }
-
+.pages-list-mobile {
+  font-size: 3.5vmin;
+}
+.pages-list-mobile > li {
+  display: grid;
+}
+.emdash {
+  font-size: 0.5rem;
+  
+}
 /* @media only screen and (min-width: 601px) {
   .intro > p {
     font-size: 1.5rem;

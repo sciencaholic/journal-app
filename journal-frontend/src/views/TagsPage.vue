@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-box">
+  <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
 		<h3 class="head-title">Tags</h3>
 		<tags-list 
 			:show="isBusy" 
@@ -28,6 +28,9 @@ export default {
 		Entry,
 		TagsList
   },
+	props: {
+		isMobileView: Boolean
+	},
 	data() {
 		return {
 			isBusy: false,

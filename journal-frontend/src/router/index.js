@@ -5,7 +5,7 @@ import MomentsPage from "@/views/MomentsPage.vue";
 import TagsPage from "@/views/TagsPage.vue";
 
 const routes = [
-  { path:"/", name:"Home", component:Home },
+  { path:"/", name:"Home", component:Home, meta: { hideNavbar:true } },
   { path:"/journal", name:"JournalPage", component:JournalPage },
   { path:"/moments", name:"MomentsPage", component:MomentsPage },
   { path:"/tags", name:"TagsPage", component:TagsPage, children: [{ path:'/:tag', component:TagsPage }] },

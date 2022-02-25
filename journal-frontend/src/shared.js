@@ -27,5 +27,8 @@ export default {
 		//eslint-disable-next-line
     let result = matches.map(x => x.substr(1)) || [];
     return result;
+	},
+	handleView: function() {
+		return window.innerWidth <= 990;
 	}
 }

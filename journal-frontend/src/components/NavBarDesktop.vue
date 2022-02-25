@@ -1,8 +1,9 @@
 <template>
 
   <div class="navbar" v-if="!$route.meta.hideNavbar">
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a>
-    <ul id="slide-out" class="sidenav">
+  <nav> <!-- navbar content here  --> </nav>
+    <!-- <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a> -->
+    <ul class="sidenav sidenav-fixed">
         <!-- <div class="brand-logo"><img :src="logo_source"></div> -->
       <!-- <li>
         <div class="user-view">
@@ -24,10 +25,11 @@
 <script>
 import shared from "../shared.js";
 export default {
-  name: 'NavBar',
+  name: 'NavBarDesktop',
   data() {
     return {
-      logo_source: ""
+      logo_source: "",
+      isMobileView: false
     }
   },
   created() {

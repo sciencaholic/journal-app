@@ -1,25 +1,36 @@
 <template>
   <div class="container pt-5">
-    <nav-bar></nav-bar>
+    <nav-bar v-if="isMobileView"></nav-bar>
+    <nav-bar-desktop v-else></nav-bar-desktop>
     <!-- <transition appear name="fade"> -->
-      <router-view/>
+      <router-view :isMobileView="isMobileView" />
     <!-- </transition> -->
   </div>
 </template>
 
 <script>
 import materialize from 'materialize-css'
+import NavBarDesktop from './components/NavBarDesktop.vue'
 import NavBar from './components/NavBar.vue'
-// import JournalPage from './components/JournalPage.vue'
+import shared from './shared.js'
 
 export default {
   name: 'App',
   components: {
-    NavBar,
-    // JournalPage
+    NavBarDesktop,
+    NavBar
+  },
+  data() {
+    return {
+      isMobileView: false
+    }
+  },
+  created() {
+    this.isMobileView = shared.handleView();
   },
   mounted () {
-    materialize.AutoInit()
+    materialize.AutoInit();
+    window.onresize = () => { this.isMobileView = shared.handleView(); }
   }
 }
 </script>
