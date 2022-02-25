@@ -17,7 +17,6 @@
 			>
 				<i class="material-icons delete-btn">clear</i>
 			</button>
-			<!-- <router-view/> -->
 		</div>
 	</div>
 </template>

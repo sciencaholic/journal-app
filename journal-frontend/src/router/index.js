@@ -8,7 +8,8 @@ const routes = [
   { path:"/", name:"Home", component:Home },
   { path:"/journal", name:"JournalPage", component:JournalPage },
   { path:"/moments", name:"MomentsPage", component:MomentsPage },
-  { path:"/tags/:tag", name:"TagsPage", component:TagsPage },
+  { path:"/tags", name:"TagsPage", component:TagsPage, children: [{ path:'/:tag', component:TagsPage }] },
+  // { path:"/tags", name:"TagsPage", component:TagsPage },
 ]
 
 const router = createRouter({
