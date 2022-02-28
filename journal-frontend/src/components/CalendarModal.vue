@@ -1,5 +1,6 @@
 <template>
 	<DatePicker 
+		class="child-box-head"
 		ref="calendar" 
 		v-model="date" 
 		is-dark 
@@ -9,15 +10,13 @@
 		:max-date='new Date()'
 	>
 		<template v-slot="{ inputValue, togglePopover }">
-			<div class="child-box-head">
-				<button 
-					class="date-select-btn waves-effect waves-black btn-floating p-1 ml-1 mr-1"
-					@click="togglePopover"
-				>
-					<i class="material-icons">date_range</i>
-				</button>
-				<h3 class="head-title">{{inputValue}}</h3>
-			</div>
+			<h3 class="head-title">{{inputValue}}</h3>
+			<button 
+				class="date-select-btn waves-effect waves-black btn-floating"
+				@click="togglePopover"
+			>
+				<i class="material-icons">date_range</i>
+			</button>
 		</template>
 		<template v-slot:footer>
 			<div class="popover-footer-bg">
@@ -73,12 +72,9 @@ export default {
 </script>
 
 <style scoped>
-.child-box-head {
-	display: inline-flex;
-	flex-direction: row;
-	align-items: center;
-	width: 75%;
-}
+/* .date-select-btn {
+
+} */
 .popover-footer-bg {
 	background-color: #232b3b;
 	text-align: center;

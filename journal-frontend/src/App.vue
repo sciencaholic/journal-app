@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-5">
+  <div class="container">
     <nav-bar v-if="isMobileView"></nav-bar>
     <nav-bar-desktop v-else></nav-bar-desktop>
     <!-- <transition appear name="fade"> -->

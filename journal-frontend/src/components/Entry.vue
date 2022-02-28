@@ -10,7 +10,7 @@
 			<p v-else class="entry-c3">{{entry.display_date}}</p>
 			<!-- <p class="entry-c2 ml-1 mr-8">{{entry.text}}</p> -->
 			<hashtag-highlight :tags="entry.tags" :text="entry.text"/>
-			<p class="entry-c3 ml-1 mr-1">{{entry.time}}</p>
+			<p class="entry-c3" :class="{'ml-1 mr-1':!isMobileView, 'm-05':isMobileView}">{{entry.time}}</p>
 			<button
 				class="transparent z-depth-0 waves-effect waves-black btn-floating p-1"
 				@click="this.$emit('delete-entry', entry._id)"
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-// import moment from 'moment'
+import shared from '../shared'
 import HighlightBtn from './HighlightBtn.vue'
 import HashtagHighlight from "./HashtagHighlight.vue";
 
@@ -37,9 +37,13 @@ export default {
 		isHLEnabled: Boolean
 	},
 	data() {
-		return {}
+		return {
+			isMobileView: false
+		}
 	},
-	created() {}, 
+	created() {
+		this.isMobileView = shared.handleView();
+	},
 	methods: {}
 }
 </script>

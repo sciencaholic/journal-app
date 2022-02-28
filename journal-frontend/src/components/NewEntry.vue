@@ -19,8 +19,11 @@
 					></textarea>
 				<!-- </div> -->
 			</p>
-			<div class="entry-c3 ml-1 mr-1">
-				<button type="submit" class="entry-add-btn waves-effect waves-black btn-floating">
+			<div class="entry-c3">
+				<button 
+					type="submit" 
+					class="entry-add-btn waves-effect waves-black btn-floating p-1"
+				>
 					<i class="material-icons">add</i>
 				</button>
 			</div>
@@ -44,8 +47,12 @@ export default {
 				highlight: false,
 				date: '',
 				text: ''
-			}
+			},
+			isMobileView: false
 		}
+	},
+	created() {
+		this.isMobileView = shared.handleView();
 	},
 	methods: {
 		toggleHighlight() {
