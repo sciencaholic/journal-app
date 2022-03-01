@@ -1,6 +1,6 @@
 <template>
   <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
-		<h3 class="head-title">Tags</h3>
+		<div class="child-box-head"><h3 class="head-title">Tags</h3></div>
 		<tags-list 
 			:show="isBusy" 
 			:tagsList="tagsList"
@@ -12,7 +12,7 @@
 			:entries="tagEntries" 
 			:isHLEnabled="false"
 		></Entry>
-		<!-- <div class="child-box-main"></div> -->
+		<div class="child-box-foot"></div>
   </div>
 </template>
 

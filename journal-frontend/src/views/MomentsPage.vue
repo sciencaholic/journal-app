@@ -1,6 +1,6 @@
 <template>
   <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
-		<h3 class="head-title">Moments</h3>
+		<div class="child-box-head"><h3 class="head-title">Moments</h3></div>
 		<Entry 
 			:show="isBusy"
 			:entries="moments" 

@@ -8,7 +8,7 @@
 			:entries="entries" 
 			:isHLEnabled="true"
 		></Entry>
-		<new-entry @add-entry="addEntry" />
+		<new-entry @add-entry="addEntry" v-show="isToday" />
   </div>
 </template>
 
@@ -34,7 +34,8 @@ export default {
 		return {
 			isBusy: false,
 			entries: [],
-			default_date: moment().format()
+			default_date: moment().format(),
+			isToday: true
 		}
 	},
 	created() {
@@ -43,6 +44,8 @@ export default {
 	methods: {
 		async refreshEntries(date) {
 			this.isBusy = true;
+			this.isToday = moment(date).isSame(this.default_date, "day");
+			console.log("isToday", this.isToday);
 			let resp = await api.getJournalEntries(moment(date).format("DD-MM-YYYY"));
 			if (resp && resp.status == "success") {
 				this.entries = (resp && resp.data) ? resp.data : null 

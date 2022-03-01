@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .intro {
   width: 50%;
-  margin: 0 auto;
+  margin: 10% auto;
   text-align: center;
   justify-content: center;
   color: white;
@@ -81,15 +81,4 @@ export default {
   font-size: 0.5rem;
   
 }
-/* @media only screen and (min-width: 601px) {
-  .intro > p {
-    font-size: 1.5rem;
-  }
-  .intro > h2 {
-    font-size: 5rem;
-  }
-  .pages-list {
-    font-size: 1.5rem;
-  }
-} */
 </style>
