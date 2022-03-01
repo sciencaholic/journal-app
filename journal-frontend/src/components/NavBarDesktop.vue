@@ -4,7 +4,7 @@
   <nav> <!-- navbar content here  --> </nav>
     <!-- <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a> -->
     <ul class="sidenav sidenav-fixed">
-        <!-- <div class="brand-logo"><img :src="logo_source"></div> -->
+        <div class="brand-logo"><img class="navbar-logo" src="@/assets/logo.png"/></div>
       <!-- <li>
         <div class="user-view">
           <div class="background"><img src="images/office.jpg"></div>
@@ -14,6 +14,8 @@
         </div>
       </li> -->
       
+				<li><p class="appname">{{appname}}</p></li>
+				<p class="emdash">——————</p>
         <li><a class="waves-effect" href="/journal">Journal</a></li>
         <li><a class="waves-effect" href="/moments">Moments</a></li>
         <li><a class="waves-effect" href="/tags">Tags</a></li>
@@ -28,22 +30,19 @@ export default {
   name: 'NavBarDesktop',
   data() {
     return {
-      logo_source: "",
+      logo: "",
+			appname: "",
       isMobileView: false
     }
   },
   created() {
-    this.logo_source = shared.content.logo_source;
+    this.logo = shared.content.logo;
+    this.appname = shared.content.appname;
   }
 }
 </script>
 
 <style scoped>
-/* .brand-logo {
-  height: 20vmin;
-  width: 20vmin;
-  padding: 2rem;
-} */
 .navbar {
   /* display: block; */
   width: min-content;

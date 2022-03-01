@@ -3,7 +3,7 @@
   <div class="navbar" v-if="!$route.meta.hideNavbar">
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons hamburger medium">menu</i></a>
     <ul id="slide-out" class="sidenav">
-        <!-- <div class="brand-logo"><img :src="logo_source"></div> -->
+      <div class="brand-logo"><img class="navbar-logo" src="@/assets/logo.png"/></div>
       <!-- <li>
         <div class="user-view">
           <div class="background"><img src="images/office.jpg"></div>
@@ -13,6 +13,8 @@
         </div>
       </li> -->
       
+        <li><p class="appname">{{appname}}</p></li>
+        <p class="emdash">——————</p>     
         <li><a class="waves-effect" href="/journal">Journal</a></li>
         <li><a class="waves-effect" href="/moments">Moments</a></li>
         <li><a class="waves-effect" href="/tags">Tags</a></li>
@@ -27,11 +29,13 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      logo_source: ""
+			appname: "",
+      logo: ""
     }
   },
   created() {
-    this.logo_source = shared.content.logo_source;
+    this.logo = shared.content.logo;
+    this.appname = shared.content.appname;
   }
 }
 </script>

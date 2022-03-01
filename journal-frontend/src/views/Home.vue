@@ -1,6 +1,7 @@
 <template>
   <div class="intro">
-    <h2>{{ title }}</h2>
+    <div class="brand-logo"><img class="homepage-logo" src="@/assets/logo.png"/></div>
+    <h2>{{ appname }}</h2>
     <p>{{ blurb }}</p>
 
     <ul class="pages-list" v-if="!isMobileView">
@@ -36,7 +37,8 @@ export default {
     }
   },
   created() {
-    this.title = shared.content.title.toUpperCase();
+    <div class="brand-logo"><img src="@/assets/logo.png"/></div>
+    this.appname = shared.content.appname.toUpperCase();
     this.blurb = shared.content.blurb;
     this.isMobileView = shared.handleView();
   },
@@ -76,9 +78,5 @@ export default {
 }
 .pages-list-mobile > li {
   display: grid;
-}
-.emdash {
-  font-size: 0.5rem;
-  
 }
 </style>

@@ -1,5 +1,6 @@
 html, body, #app {
 	height: 100vh;
+	/* font-family: 'Montserrat', sans-serif; */
 }
 
 .container {
@@ -12,6 +13,7 @@ html, body, #app {
 }
 .navbar {
 	margin: 1rem 0.5rem !important;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .sidenav.sidenav-fixed {
@@ -21,6 +23,28 @@ html, body, #app {
 	padding-left: 18rem;
 }
 
+
+.brand-logo {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem 1rem 1rem 1rem;
+}
+.navbar-logo {
+  height: 5rem;
+  width: 5rem;
+}
+.homepage-logo {
+  height: 10rem;
+  width: 10rem;
+}
+.appname {
+  color: #ffffff;
+  font-size: 2rem;
+  margin: 1rem;
+	text-align: center;
+}
 
 .head-title {
 	color: white;
@@ -111,6 +135,13 @@ html, body, #app {
 .b-shadow {
 	box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.7);
 }
+.emdash {
+	color: white;
+  font-size: 0.5rem;
+  text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
 
 /* -------------------- PADDING -------------------- */
 /* full */
@@ -193,6 +224,10 @@ html, body, #app {
 	}
 	.entry {
 		font-size: 1rem;
+	}
+	.homepage-logo {
+		height: 5rem;
+		width: 5rem;
 	}
 }
 @media only screen and (min-width:961px)  { 
