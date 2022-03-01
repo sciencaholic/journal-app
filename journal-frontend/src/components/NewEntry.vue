@@ -5,7 +5,7 @@
 				:isHighlighted="newEntry.highlight"
 				@toggle-highlight="toggleHighlight"
 			/>
-			<p class="entry-c2 ml-1 mr-8">
+			<p class="entry-c2">
 				<!-- <div class="input-field entry-c2 ml-1 mr-8"> -->
 					<textarea 
 						type="text" 
@@ -19,6 +19,7 @@
 					></textarea>
 				<!-- </div> -->
 			</p>
+			<p class="entry-c3"></p>
 			<div class="entry-c3">
 				<button 
 					type="submit" 

@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
+  <div class="parent-box" :class="{'sidenav-padded my-2':!isMobileView}">
 		<calendar-modal @journal-date-change="refreshEntries"></calendar-modal>
 		<Entry 
 			:show="isBusy"

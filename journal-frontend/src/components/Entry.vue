@@ -10,12 +10,12 @@
 			<p v-else class="entry-c3">{{entry.display_date}}</p>
 			<!-- <p class="entry-c2 ml-1 mr-8">{{entry.text}}</p> -->
 			<hashtag-highlight :tags="entry.tags" :text="entry.text"/>
-			<p class="entry-c3" :class="{'ml-1 mr-1':!isMobileView, 'm-05':isMobileView}">{{entry.time}}</p>
+			<p class="entry-c3">{{entry.time}}</p> <!-- :class="{'ml-1 mr-1':!isMobileView, 'm-05':isMobileView}"-->
 			<button
-				class="transparent z-depth-0 waves-effect waves-black btn-floating p-1"
+				class="transparent z-depth-0 waves-effect waves-black btn-floating delete-btn"
 				@click="this.$emit('delete-entry', entry._id)"
 			>
-				<i class="material-icons delete-btn">clear</i>
+				<i class="material-icons delete-icon">clear</i>
 			</button>
 		</div>
 	</div>
@@ -49,7 +49,10 @@ export default {
 </script>
 
 <style scoped>
-.delete-btn {
+.delete-icon {
 	color: #616161;
+}
+.delete-btn {
+	margin: 0 0.5rem;
 }
 </style>

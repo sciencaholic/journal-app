@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-box" :class="{'sidenav-padded':!isMobileView}">
+  <div class="parent-box" :class="{'sidenav-padded my-2':!isMobileView}">
 		<div class="child-box-head"><h3 class="head-title">Tags</h3></div>
 		<tags-list 
 			:show="isBusy" 

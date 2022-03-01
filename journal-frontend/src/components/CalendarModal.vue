@@ -10,13 +10,13 @@
 		:max-date='new Date()'
 	>
 		<template v-slot="{ inputValue, togglePopover }">
-			<h3 class="head-title">{{inputValue}}</h3>
 			<button 
 				class="date-select-btn waves-effect waves-black btn-floating"
 				@click="togglePopover"
 			>
 				<i class="material-icons">date_range</i>
 			</button>
+			<h3 class="head-title">{{inputValue}}</h3>
 		</template>
 		<template v-slot:footer>
 			<div class="popover-footer-bg">
@@ -72,9 +72,9 @@ export default {
 </script>
 
 <style scoped>
-/* .date-select-btn {
-
-} */
+.date-select-btn {
+	margin: 0 0.5rem;
+}
 .popover-footer-bg {
 	background-color: #232b3b;
 	text-align: center;

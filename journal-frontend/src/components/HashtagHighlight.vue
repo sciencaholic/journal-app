@@ -1,5 +1,6 @@
 <template>
-	<p class="entry-c2" :class="{'ml-1 mr-8':!isMobileView, 'm-05':isMobileView}" v-html="htmlEntry(text)"></p>
+	<!-- :class="{'ml-1 mr-8':!isMobileView, 'm-05':isMobileView}"-->
+	<p class="entry-c2" v-html="htmlEntry(text)"></p>
 </template>
 
 <script>
