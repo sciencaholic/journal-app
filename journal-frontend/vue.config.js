@@ -1,5 +1,6 @@
 module.exports = {
   devServer: {
-    host: 'localhost'
+    host: 'localhost',
+    disableHostCheck: true   // That solved it
   }
 }
