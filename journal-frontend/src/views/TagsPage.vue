@@ -42,7 +42,7 @@ export default {
 	},
 	watch: { 
 		tag: function(n, o) {
-			// console.log('Prop changed: ', n, ' | was: ', o);
+			console.log('Prop changed: ', n, ' | was: ', o);
 			this.refreshPage();
 		}
 	},
