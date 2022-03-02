@@ -8,9 +8,8 @@
 				@toggle-highlight="this.$emit('toggle-highlight', entry._id)" 
 			/>
 			<p v-else class="entry-c3">{{entry.display_date}}</p>
-			<!-- <p class="entry-c2 ml-1 mr-8">{{entry.text}}</p> -->
-			<hashtag-highlight :tags="entry.tags" :text="entry.text"/>
-			<p class="entry-c3">{{entry.time}}</p> <!-- :class="{'ml-1 mr-1':!isMobileView, 'm-05':isMobileView}"-->
+			<hashtag :tags="entry.tags" :text="entry.text"/>
+			<p class="entry-c3">{{entry.time}}</p>
 			<button
 				class="transparent z-depth-0 waves-effect waves-black btn-floating delete-btn"
 				@click="this.$emit('delete-entry', entry._id)"
@@ -24,12 +23,12 @@
 <script>
 import shared from '../shared'
 import HighlightBtn from './HighlightBtn.vue'
-import HashtagHighlight from "./HashtagHighlight.vue";
+import Hashtag from "./Hashtag.vue";
 
 export default {
   components: { 
 		HighlightBtn,
-		HashtagHighlight
+		Hashtag
 	},
 	name: 'Entry',
 	props: {

@@ -29,7 +29,8 @@ export default {
 		TagsList
   },
 	props: {
-		isMobileView: Boolean
+		isMobileView: Boolean,
+		tag: String
 	},
 	data() {
 		return {
@@ -39,16 +40,27 @@ export default {
 			currentTag: null
 		}
 	},
+	watch: { 
+		tag: function(n, o) {
+			// console.log('Prop changed: ', n, ' | was: ', o);
+			this.refreshPage();
+		}
+	},
 	created() {
-		this.isBusy = true;
-		this.refreshTagEntries();
-		this.isBusy = false;
+		this.refreshPage();
 	},
 	methods: {
-		async refreshTagEntries() {
-			let resp = await api.getTags(this.currentTag || '');
+		refreshPage() {
+			this.isBusy = true;
+			this.currentTag = (this.tag) ? this.tag : '';
+			this.refreshTagEntries(this.currentTag);
+			this.isBusy = false;
+		},
+		async refreshTagEntries(tag) {
+			let resp = await api.getTags(tag); // this.tag || this.currentTag || ''
 			if (resp && resp.status == "success") {
-				console.log(resp);
+				// console.log(resp);
+				// below is needed to select chip in TagsList
 				this.currentTag = (resp.currentTag) ? resp.currentTag : null;
 				this.tagsList = (resp.tagsList) ? resp.tagsList : null;
 				this.tagEntries = (resp.data) ? resp.data : null 
@@ -61,9 +73,10 @@ export default {
 			}
 		},
 		onTagSelect(tag) {
-			if (tag == this.currentTag) return;
+			// below is needed so we don't refresh page unnecessarily on same tag click
+			if (tag == this.tag) return;
 			this.currentTag = tag;
-			this.refreshTagEntries();
+			this.refreshTagEntries(tag);
 		}
 	}
 }

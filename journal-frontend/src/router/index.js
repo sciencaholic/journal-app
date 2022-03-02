@@ -8,7 +8,10 @@ const routes = [
   { path:"/", name:"Home", component:Home, meta: { hideNavbar:true } },
   { path:"/journal", name:"JournalPage", component:JournalPage },
   { path:"/moments", name:"MomentsPage", component:MomentsPage },
-  { path:"/tags", name:"TagsPage", component:TagsPage, children: [{ path:'/:tag', component:TagsPage }] },
+  { path:"/tags", name:"TagsPage", component:TagsPage, 
+    children: [{ path:'/tags/:tag', name:"TagItem", component:TagsPage }], 
+    props:true 
+  },
   // { path:"/tags", name:"TagsPage", component:TagsPage },
 ]
 

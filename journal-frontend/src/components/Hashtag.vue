@@ -1,34 +1,40 @@
 <template>
-	<!-- :class="{'ml-1 mr-8':!isMobileView, 'm-05':isMobileView}"-->
-	<p class="entry-c2" v-html="htmlEntry(text)"></p>
+  <component :is="{template:htmlStr}"></component>
 </template>
 
 <script>
 import shared from '../shared'
 
 export default {
-  name: 'HashtagHighlight',
+  name: 'Hashtag',
 	props: {
 		text: String,
 		tags: Array,
 	},
   data () {
     return {
-			isMobileView: false
+			isMobileView: false,
+      htmlStr: `<p class="entry-c2">{{data}}</p>`
 		}
   },
 	created() {
 		this.isMobileView = shared.handleView();
+    this.htmlStr = this.htmlStr.replace("{{data}}", this.entryHtml(this.text))
 	},
 	methods: {
-		htmlEntry(text) {
+		entryHtml(text) {
 			for (let i = 0; i < this.tags.length; i++) {
 				text = text.replace('#'+this.tags[i], this.hashLink(this.tags[i]));
 			}
 			return text;
 		},
 		hashLink(s) {
-			return `<a href="/tags/${s}" class="base-color-green">#${s}</a>`
+      return `<router-link 
+        class="base-color-green" 
+        :to="{ name: 'TagItem', params: { tag: '${s}' }}"
+      >
+        #${s}
+      </router-link>`
 		}
 	}
 }
