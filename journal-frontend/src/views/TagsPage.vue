@@ -11,6 +11,7 @@
 			:show="isBusy"
 			:entries="tagEntries" 
 			:isHLEnabled="false"
+			@delete-entry="deleteEntry"
 		></Entry>
 		<div class="child-box-foot"></div>
   </div>
@@ -77,6 +78,14 @@ export default {
 			if (tag == this.tag) return;
 			this.currentTag = tag;
 			this.refreshTagEntries(tag);
+		},
+		async deleteEntry(id) {
+			this.tagEntries = this.tagEntries.filter(e => e._id !== id);
+			let resp = await api.deleteEntry(id);
+			if (resp && resp.status == "success") return;
+			else {
+				shared.toast(shared.errorTexts.SERVER_ERROR);
+			}
 		}
 	}
 }

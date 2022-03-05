@@ -5,6 +5,7 @@
 			:show="isBusy"
 			:entries="moments" 
 			:isHLEnabled="false"
+			@delete-entry="deleteEntry"
 		></Entry>
 		<div class="child-box-foot"></div>
   </div>
@@ -43,6 +44,14 @@ export default {
 				shared.getDisplayDateOrTime(this.moments, "display_date", "MMM DD");
 				shared.getDisplayDateOrTime(this.moments, "time", "hh:mm");
 			}
+			else {
+				shared.toast(shared.errorTexts.SERVER_ERROR);
+			}
+		},
+		async deleteEntry(id) {
+			this.moments = this.moments.filter(e => e._id !== id);
+			let resp = await api.deleteEntry(id);
+			if (resp && resp.status == "success") return;
 			else {
 				shared.toast(shared.errorTexts.SERVER_ERROR);
 			}
