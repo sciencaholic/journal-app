@@ -33,17 +33,28 @@ export default {
   name: 'Home',
   data () {
     return {
-      isMobileView: false
+      isMobileView: false,
+      appname: '',
+      blurb: ''
     }
   },
   created() {
-    <div class="brand-logo"><img src="@/assets/logo.png"/></div>
-    this.appname = shared.content.appname.toUpperCase();
-    this.blurb = shared.content.blurb;
-    this.isMobileView = shared.handleView();
+    // Initialize default values in case shared.content is null
+    this.appname = 'Chronicle';
+    this.blurb = 'A simple journaling application';
+    
+    // Check if shared.content exists before accessing it
+    if (shared && shared.content) {
+      this.appname = shared.content.appname ? shared.content.appname.toUpperCase() : this.appname;
+      this.blurb = shared.content.blurb || this.blurb;
+    }
+    
+    this.isMobileView = shared && typeof shared.handleView === 'function' ? shared.handleView() : false;
   },
   mounted() {
-    window.onresize = () => { this.isMobileView = shared.handleView(); }
+    window.onresize = () => { 
+      this.isMobileView = shared && typeof shared.handleView === 'function' ? shared.handleView() : false;
+    }
   }
 }
 </script>
@@ -55,7 +66,7 @@ export default {
   text-align: center;
   justify-content: center;
   color: white;
-	font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   /* font-weight: 600; */
 }
 .intro > p {
